@@ -13,13 +13,13 @@ class MotorTest extends CDbTestCase
 	{
 		$motor=new Motor;
 		$motor->setAttributes(array(
-			'model' => 'Honda',
-			'cc' => '125',
+			'make' => 'Honda',
+			'model' => 'CG',
 			'color' => 1,
 			'weight' => 110,
 			'price' => 120000,
 			'image' => 'honda',
-			'year' => '1987',
+			'cc' => 200,
 		), false);
 
 		$this->assertTrue($motor->save(false));
@@ -31,27 +31,27 @@ class MotorTest extends CDbTestCase
 	{
 		$motor=new Motor;
 		$motor->setAttributes(array(
-			'model' => 'Honda',
-			'cc' => '125',
+			'make' => 'Suzuki',
+			'model' => 'kd',
 			'color' => 1,
 			'weight' => 110,
 			'price' => 120000,
-			'image' => 'honda',
-			'year' => '1987',
+			'image' => 'suzuki',
+			'cc' => 200,
 		), false);
 		$this->assertTrue($motor->save(false));
 		$motor=Motor::model()->findByPk($motor->id);
-		$motor->model='suzuki';
+		$motor->make='Yamaha';
 		$this->assertTrue($motor->save(false));
-		$this->assertEquals("suzuki", $motor->model);
+		$this->assertEquals("Yamaha", $motor->make);
 	}
 
 	public function testDeleteMotor()
 	{
-		$motor=Motor::model()->find('model = "suzuki"');
+		$motor=Motor::model()->find('make = "Kawasaki"');
 		$this->assertNotNull($motor);
 		$motor->delete();
-		$motor=Motor::model()->find('model = "suzuki"');
+		$motor=Motor::model()->find('make = "Kawasaki"');
 		$this->assertNull($motor);
 	}
 }

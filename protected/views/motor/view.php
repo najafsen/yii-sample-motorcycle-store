@@ -18,33 +18,18 @@ $this->menu=array(
 
 <h1>View Motor <?php echo $model->model; ?></h1>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('model')); ?>:</b>
-<?php echo CHtml::encode($model->model); ?>
-<br />
+<?php $this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+	'attributes'=>array(
+		'make',
+		'model',
+		'color',
+		'weight',
+		'price',
+		'cc',
+		'created_at',
+	),
+)); ?>
 
-<b><?php echo CHtml::encode($model->getAttributeLabel('cc')); ?>:</b>
-<?php echo CHtml::encode($model->cc); ?>
 <br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('color')); ?>:</b>
-<?php echo CHtml::encode(Motor::getColorById($model->color)); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('weight')); ?>:</b>
-<?php echo CHtml::encode($model->weight); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('price')); ?>:</b>
-<?php echo CHtml::encode($model->price); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('year')); ?>:</b>
-<?php echo CHtml::encode($model->year); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('created_at')); ?>:</b>
-<?php echo CHtml::encode($model->created_at); ?>
-<br />
-
-<?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/'.$model->image,"image",array("width"=>500)); ?>
-<br />
+<?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/'.$model->image,"image",array("width"=>710)); ?>

@@ -5,13 +5,13 @@
  *
  * The followings are the available columns in table '{{motor}}':
  * @property integer $id
+ * @property string $make
  * @property string $model
- * @property string $cc
  * @property integer $color
  * @property integer $weight
  * @property double $price
  * @property string $image
- * @property string $year
+ * @property integer $cc
  * @property string $created_at
  */
 class Motor extends CActiveRecord
@@ -42,16 +42,16 @@ class Motor extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('model, cc, color, weight, price, year', 'required'),
-			array('color, weight', 'numerical', 'integerOnly'=>true),
+			array('model, make, color, weight, price, cc', 'required'),
+			array('color, weight, cc', 'numerical', 'integerOnly'=>true),
 			array('price', 'numerical'),
-			array('model, cc', 'length', 'max'=>256),
-			array('image', 'file','types'=>'jpg, gif, png', 'wrongType'=>'Only jpg allowed.', 'allowEmpty'=>false, 'on'=>'insert', 'safe'=>false),
-			array('image', 'file','types'=>'jpg, gif, png', 'wrongType'=>'Only jpg allowed.', 'allowEmpty'=>true, 'on'=>'update', 'safe'=>false),
-			array('year', 'length', 'max'=>4),
+			array('model, make', 'length', 'max'=>50),
+			array('image', 'file','types'=>'jpg, jpeg, png', 'wrongType'=>'Only jpg, jpeg, png allowed.', 'allowEmpty'=>false, 'on'=>'insert', 'safe'=>false),
+			array('image', 'file','types'=>'jpg, jpeg, png', 'wrongType'=>'Only jpg, jpeg, png allowed.', 'allowEmpty'=>true, 'on'=>'update', 'safe'=>false),
+			array('cc', 'length', 'max'=>4),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('model, cc, color, weight, price, year, created_at', 'safe', 'on'=>'search'),
+			array('model, make, color, weight, price, cc, created_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,12 +74,12 @@ class Motor extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'model' => 'Model',
-			'cc' => 'Cc',
+			'make' => 'Make',
 			'color' => 'Color',
 			'weight' => 'Weight',
 			'price' => 'Price',
 			'image' => 'Image',
-			'year' => 'Year',
+			'cc' => 'Cc',
 			'created_at' => 'Created At',
 		);
 	}
@@ -96,12 +96,12 @@ class Motor extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('model',$this->model,true);
-		$criteria->compare('cc',$this->cc,true);
+		$criteria->compare('make',$this->make,true);
 		$criteria->compare('color',$this->color);
 		$criteria->compare('weight',$this->weight);
 		$criteria->compare('price',$this->price);
 		$criteria->compare('image',$this->image,true);
-		$criteria->compare('year',$this->year,true);
+		$criteria->compare('cc',$this->cc,true);
 		$criteria->compare('created_at', $this->created_at, true);
 
 		return new CActiveDataProvider($this, array(

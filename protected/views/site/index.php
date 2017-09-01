@@ -4,9 +4,11 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<h1>Hello There!</h1>
+<hr />
 
-<p>This is a sample of Yii for test case Sheypoor.</p>
+<h3>This is a sample Yii 1 application.</h3>
+<hr />
 
 <p>For more details on how to further develop this application, please read
 the <a href="http://www.yiiframework.com/doc/">documentation</a>.

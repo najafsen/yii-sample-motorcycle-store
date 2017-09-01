@@ -8,7 +8,7 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'motor-form',
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
 	'htmlOptions' => array(
 		'enctype' => 'multipart/form-data',
 	),
@@ -19,15 +19,15 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'model'); ?>
-		<?php echo $form->textField($model,'model',array('size'=>60,'maxlength'=>256)); ?>
-		<?php echo $form->error($model,'model'); ?>
+		<?php echo $form->labelEx($model,'make'); ?>
+		<?php echo $form->textField($model,'make',array('size'=>60,'maxlength'=>256)); ?>
+		<?php echo $form->error($model,'make'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'cc'); ?>
-		<?php echo $form->textField($model,'cc',array('size'=>60,'maxlength'=>256)); ?>
-		<?php echo $form->error($model,'cc'); ?>
+		<?php echo $form->labelEx($model,'model'); ?>
+		<?php echo $form->textField($model,'model',array('size'=>60,'maxlength'=>256)); ?>
+		<?php echo $form->error($model,'model'); ?>
 	</div>
 
 	<div class="row">
@@ -60,9 +60,9 @@
 	<?php } ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'year'); ?>
-		<?php echo $form->textField($model,'year',array('size'=>4,'maxlength'=>4)); ?>
-		<?php echo $form->error($model,'year'); ?>
+		<?php echo $form->labelEx($model,'cc'); ?>
+		<?php echo $form->textField($model,'cc',array('size'=>4,'maxlength'=>4)); ?>
+		<?php echo $form->error($model,'cc'); ?>
 	</div>
 
 	<div class="row buttons">
