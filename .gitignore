@@ -1,0 +1,5 @@
+.idea
+images
+composer.lock
+vendor
+protected/runtime/application.log
